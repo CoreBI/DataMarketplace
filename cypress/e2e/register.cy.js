@@ -10,8 +10,8 @@ describe('Register validations', {testIsolation: false} ,() => {
 
     cy.get('[data-cy=next]').should('be.disabled')
 
-    cy.get('[data-cy=companyName]').type('Cypress Test Company')
-    cy.get('[data-cy=ubication]').type('Cypress Test Ubication')
+    cy.get('[data-cy=companyName]').type('AutoTest')
+    cy.get('[data-cy=ubication]').type('AutoUbi')
     cy.get('[data-cy=industry]').select(1)
     cy.get('[data-cy=companySize]').select(1)
 
@@ -24,7 +24,7 @@ describe('Register validations', {testIsolation: false} ,() => {
 
     cy.get('[data-cy=next]').should('be.disabled')
 
-    cy.get('[data-cy=firstName]').type('Cypress')
+    cy.get('[data-cy=firstName]').type('Auto')
     cy.get('[data-cy=lastName]').type('Test')
 
     cy.get('[data-cy=next]').should('not.be.disabled')
@@ -47,6 +47,9 @@ describe('Register validations', {testIsolation: false} ,() => {
   it('Step 3 - Email validations', () => {
 
     cy.get('[data-cy=email]').type('cypress')
+    cy.get('[data-cy=email-error-msg]').should('be.visible')
+
+    cy.get('[data-cy=email]').clear().type('cypress@mail')
     cy.get('[data-cy=email-error-msg]').should('be.visible')
 
     cy.get('[data-cy=email]').clear().type('cypress@mail.')
